@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable no-shadow */
@@ -146,6 +147,14 @@ const List = (props) => {
             <span className="ml-2 text-lg font-bold text-blue-400">
               {item.total_shares}
             </span>
+          </div>
+          <div>
+            <span className="font-bold text-black">
+            Link
+            </span>
+            <a target="_blank" href={item.link} className="ml-2 text-lg font-bold text-blue-400">
+              {item.link}
+            </a>
           </div>
           <div>
             <span className="font-bold text-black">

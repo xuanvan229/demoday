@@ -139,7 +139,6 @@ const NavBar = (props) => {
     setIsModalVisible(false);
   };
 
-  console.log("moment(moment().unix() + time).format('MM/DD/YYYY')", time);
   return (
   <div className={styles.navbar}>
     <Modal title="Thay đổi số dư" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
