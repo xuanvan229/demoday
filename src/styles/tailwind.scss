@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.lora {
+  font-family: 'Nunito', serif;
+}
+
+.btn {
+  min-width: 56px;
+  box-sizing: border-box;
+  @apply border flex px-4 py-2 justify-center rounded-md shadow-md border-gray-600;
+  span {
+    @apply flex items-center;
+  }
+}
+
+.btn-close {
+  @apply flex items-center justify-center;
+}
+
+.image-add {
+  @apply relative;
+  &:hover {
+    .btn-close {
+      display: flex;
+    }
+  }
+  .btn-close {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    @apply absolute shadow-lg;
+    right: 0.25rem;
+    top: 0px;
+    display: none;
+  }
+}
+
+.list-add {
+  @apply relative border-l-2 border-gray-700;
+  .item-add {
+    @apply relative pl-24 py-4;
+  }
+}
+
+#app {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(99, 99, 99, 0.8);
+    content: "";
+  }
+}
+
+.time_line {
+  @apply flex flex-col relative;
+  max-width: 700px;
+  padding-bottom: 500px;
+  padding-top: 80px;
+  &::before{
+    @apply absolute;
+    content: '';
+    left: 50%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    @apply bg-gray-500;
+  }
+  &__item {
+    width: calc(50% - 40px);
+    opacity: 0.3;
+    transition: 0.5s;
+    padding-top: 80px;
+    margin-bottom: 40px;
+    cursor: pointer;
+    &::before{
+      content: attr(data-text);
+      letter-spacing: 3px;
+      width: 100%;
+      position: absolute;
+      color: #ffffff;
+      font-size: 13px;
+      border-left:6px solid;
+      top: 70%;
+      margin-top: -5px;
+      padding-left: 15px;
+      opacity: 0;
+      right: calc(-100% - 38px);
+      text-shadow: 1px 4px 3px #020202;
+      @apply border-pink-500;
+    }
+    &:nth-child(even) {
+      align-self: flex-end;
+      &::before {
+        right: auto;
+        text-align: right;
+        left: calc(-100% - 36px);
+        padding-left: 0;
+        border-left: none;
+        border-right: 6px solid;
+        padding-right: 15px;
+        @apply border-pink-500;
+
+      }
+    }
+    h3 {
+      font-weight: normal;
+      font-size: 66px;
+      margin: -10px 0 0 0;
+      transition: .4s;
+      padding: 0 10px;
+      box-sizing: border-box;
+      text-shadow: 1px 4px 3px #020202;
+    }
+    .description{
+      text-shadow: 1px 4px 3px #020202;
+    }
+  }
+  &__item__active {
+    opacity: 1;
+    transform: translateY(0px);
+    &::before {
+      top: 50%;
+      transition: .3s all .2s;
+      opacity: 1;
+    }
+    h3{
+      margin-top: -60px;
+    }
+  }
+}

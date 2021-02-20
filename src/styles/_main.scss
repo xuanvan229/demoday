@@ -1,0 +1,122 @@
+
+:root {
+  --fx-space-0: 0;
+  --fx-space-1: 0.25rem;
+  --fx-space-2: 0.5rem;
+  --fx-space-3: 0.75rem;
+  --fx-space-4: 1rem;
+  --fx-space-5: 1.25rem;
+  --fx-space-6: 1.5rem;
+  --fx-space-8: 2rem;
+  --fx-space-10: 2.5rem;
+  --fx-space-12: 3rem;
+  --fx-space-16: 4rem;
+  --fx-space-20: 5rem;
+  --fx-space-24: 6rem;
+  --fx-space-32: 8rem;
+  --fx-space-40: 10rem;
+  --fx-space-48: 12rem;
+  --fx-space-56: 14rem;
+  --fx-space-64: 16rem;
+  --fx-space-200: 200px;
+  --fx-space-250: 250px;
+  --fx-space-300: 300px;
+  --fx-space-500: 500px;
+  --fx-screen-xs: 400px;
+  --fx-screen-sm: 640px;
+  --fx-screen-md: 768px;
+  --fx-screen-lg: 1024px;
+  --fx-screen-xl: 1280px;
+}
+.theme-dark {
+  --fx-primaryColor: #12805c;
+  --fx-secondaryColor: #e68619;
+  --fx-text: #4b4b4b;
+
+  --fx-blue-100: #B3B3FF;
+  --fx-blue-200: #8080FF;
+  --fx-blue-300: #1A1AFF;
+  --fx-blue-400: #0000ff;
+  --fx-blue-500: #0000CC;
+  --fx-blue-600: #000099;
+  --fx-blue-700: #000080;
+
+  --fx-green-100: #00DA00;
+  --fx-green-200: #00C000;
+  --fx-green-300: #008D00;
+  --fx-green-400: #008000;
+  --fx-green-500: #006600;
+  --fx-green-600: #004D00;
+  --fx-green-700: #004000;
+
+  --fx-red-100: #FFB3B3;
+  --fx-red-200: #FF8080;
+  --fx-red-300: #FF1A1A;
+  --fx-red-400: #ff0000;
+  --fx-red-500: #CC0000;
+  --fx-red-600: #990000;
+  --fx-red-700: #800000;
+
+  --fx-yellow-100: #FFFFB3;
+  --fx-yellow-200: #FFFF80;
+  --fx-yellow-300: #FFFF1A;
+  --fx-yellow-400: #ffff00;
+  --fx-yellow-500: #CCCC00;
+  --fx-yellow-600: #999900;
+  --fx-yellow-700: #7F8000;
+
+  --fx-purple-100: #DA00DA;
+  --fx-purple-200: #C000C0;
+  --fx-purple-300: #8D008D;
+  --fx-purple-400: #800080;
+  --fx-purple-500: #660066;
+  --fx-purple-600: #4D004D;
+  --fx-purple-700: #400040;
+
+}
+.theme-light {
+  --fx-primaryColor: #e68619;
+  --fx-secondaryColor: #12805c;
+  --fx-text: #fafafa;
+
+  --fx-blue-100: #B3B3FF;
+  --fx-blue-200: #8080FF;
+  --fx-blue-300: #1A1AFF;
+  --fx-blue-400: #0000ff;
+  --fx-blue-500: #0000CC;
+  --fx-blue-600: #000099;
+  --fx-blue-700: #000080;
+
+  --fx-green-100: #00DA00;
+  --fx-green-200: #00C000;
+  --fx-green-300: #008D00;
+  --fx-green-400: #008000;
+  --fx-green-500: #006600;
+  --fx-green-600: #004D00;
+  --fx-green-700: #004000;
+
+  --fx-red-100: #FFB3B3;
+  --fx-red-200: #FF8080;
+  --fx-red-300: #FF1A1A;
+  --fx-red-400: #ff0000;
+  --fx-red-500: #CC0000;
+  --fx-red-600: #990000;
+  --fx-red-700: #800000;
+
+  --fx-yellow-100: #FFFFB3;
+  --fx-yellow-200: #FFFF80;
+  --fx-yellow-300: #FFFF1A;
+  --fx-yellow-400: #ffff00;
+  --fx-yellow-500: #CCCC00;
+  --fx-yellow-600: #999900;
+  --fx-yellow-700: #7F8000;
+
+  --fx-purple-100: #DA00DA;
+  --fx-purple-200: #C000C0;
+  --fx-purple-300: #8D008D;
+  --fx-purple-400: #800080;
+  --fx-purple-500: #660066;
+  --fx-purple-600: #4D004D;
+  --fx-purple-700: #400040;
+
+}
