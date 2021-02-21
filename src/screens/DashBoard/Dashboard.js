@@ -76,7 +76,7 @@ const Dashboard = () => {
   };
 
   return (
-  <div className="flex flex-col max-w-1000 w-full bg-gray-100 shadow-lg rounded-md flex-1">
+  <div className="flex flex-col w-full bg-gray-100 shadow-lg rounded-md flex-1">
     <Header title="Tạo mới dự án" />
     <div className="list-add">
       <div className="item-add">

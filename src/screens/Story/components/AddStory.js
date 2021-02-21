@@ -9,7 +9,7 @@ import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 
 const AddStory = () => (
-  <div className="flex flex-col max-w-1000 w-full bg-gray-100 shadow-lg rounded-md flex-1 p-10">
+  <div className="flex flex-col w-full bg-gray-100 shadow-lg rounded-md flex-1 p-10">
     <div className="list-add">
       <div className="item-add">
         <div className="flex flex-col w-3/4">
