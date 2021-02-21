@@ -27,9 +27,9 @@ const DashBoardLayout = () => {
   return (
   <div className="flex flex-row min-h-screen overflow-hidden">
     <NavBar fetchWallet={fetchWallet}/>
-    <div className="flex flex-col flex-1">
-      <Header />
-      <div className="flex flex-col items-center bg-gray-200 flex-1 overflow-auto">
+    <div className="flex flex-col flex-1" style={{ marginLeft: '250px' }}>
+      {/* <Header /> */}
+      <div className="flex flex-col items-center bg-gray-200 flex-1 overflow-auto" >
         <Switch >
           <Route exact path="/dashboard/new" component={Dashboard} />
           <Route path="/dashboard/list" component={List} />

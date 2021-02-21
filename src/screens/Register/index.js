@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   if (isLogin) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboard/new" />;
   }
 
   // const loginForm = (e) => {

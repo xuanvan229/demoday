@@ -12,8 +12,6 @@ import { AiOutlineSolution } from 'react-icons/ai';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-// import { FiTarget } from 'react-icons/fi';
-// import { GiSandsOfTime } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import logo from '../../assets/images/logo.png';
@@ -166,7 +164,7 @@ const NavBar = (props) => {
       <NavLink activeClassName="text-blue-500 font-bold" to="/dashboard/list" className="p-4 border-b border-blue-400 cursor-pointer flex flex-row items-center">
         <AiOutlineSolution className="text-xl text-blue-400"/>
         <span className="ml-4 text-xl">
-          Duyệt
+          Đầu tư
         </span>
       </NavLink>
 
@@ -177,8 +175,8 @@ const NavBar = (props) => {
         </span>
       </NavLink>
       </div>
-      <div>
-        Thời gian hiện tại {moment(Number(moment().format('x')) + time).format('DD/MM/YYYY')}
+      <div className="text-lg">
+        Thời gian hiện tại <span className="font-bold">{moment(Number(moment().format('x')) + time).format('DD/MM/YYYY')}</span>
       </div>
       <Button type="primary" onClick={trigerNextEvent}>
           Trigger Next Event
@@ -189,7 +187,7 @@ const NavBar = (props) => {
             Số tiền đang có
           </div>
         </div>
-        <Button onClick={showModal}>
+        <Button onClick={showModal} disabled={item && item.balances > 1000000}>
           Thay đổi
         </Button>
       </div>

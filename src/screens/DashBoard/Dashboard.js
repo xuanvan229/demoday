@@ -8,6 +8,7 @@ import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { post } from '../../services/api';
+import Header from '../../components/Header';
 
 const addProjectAPI = (data, headersAuthen) => {
   const url = '/projects';
@@ -21,13 +22,14 @@ const Dashboard = () => {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [description, setDescription] = useState('');
-  const [moneyPerCoPhan, setMoneyPerCoPhan] = useState('');
-  const [min, setMin] = useState('');
+  const [moneyPerCoPhan, setMoneyPerCoPhan] = useState(1000000);
+  const [min, setMin] = useState(1);
   const [profit_time_type, setProfitTimeType] = useState('month');
   const [profit_time, setProfitTime] = useState(1);
-  const [cophan, setCophan] = useState(1);
+  const [cophan, setCophan] = useState(100);
   const [loinhuan, setLoiNhuan] = useState(1);
   const [withdraw_time, setWithdrawTime] = useState(1);
+  const [available_time, setAvailableTime] = useState(1);
   const isLogin = useSelector((state) => state.login.isLogin);
   const token = useSelector((state) => state.login.accessToken);
 
@@ -57,6 +59,7 @@ const Dashboard = () => {
       profit_time,
       profit_time_type,
       withdraw_time,
+      available_time,
     };
     try {
       const result = await addProjectAPI(data, token);
@@ -73,7 +76,8 @@ const Dashboard = () => {
   };
 
   return (
-  <div className="flex flex-col max-w-1000 w-full bg-gray-100 shadow-lg rounded-md flex-1 p-10">
+  <div className="flex flex-col max-w-1000 w-full bg-gray-100 shadow-lg rounded-md flex-1">
+    <Header title="Tạo mới dự án" />
     <div className="list-add">
       <div className="item-add">
         <div className="flex flex-col w-3/4">
@@ -103,7 +107,8 @@ const Dashboard = () => {
         <div className="flex flex-row mt-6 items-end">
             <div className="flex flex-col w-3/4">
               <label className="text-lg">Lợi nhuận (%)</label>
-              <InputNumber value={loinhuan} onChange={(value) => setLoiNhuan(value)} className="p-1 border w-full mt-2 shadow-md rounded-md"/>
+              <InputNumber value={loinhuan} max={100} min={0} onChange={(value) => setLoiNhuan(value)} className="p-1 border w-full mt-2 shadow-md rounded-md"/>
+              <label className="text-sm">Ví dụ lãi suất là 10%</label>
             </div>
         </div>
         <div className="flex flex-row mt-6 items-end">
@@ -122,6 +127,10 @@ const Dashboard = () => {
         <div className="flex flex-col w-3/4 mt-6">
           <label className="text-lg">Thời gian rút vốn (tháng)</label>
           <InputNumber value={withdraw_time} onChange={(value) => setWithdrawTime(value)} className="p-1 w-full mt-2 rounded-md text-gray-700 shadow-md" />
+        </div>
+        <div className="flex flex-col w-3/4 mt-6">
+          <label className="text-lg">Thời gian đầu tư (tháng)</label>
+          <InputNumber value={available_time} onChange={(value) => setAvailableTime(value)} className="p-1 w-full mt-2 rounded-md text-gray-700 shadow-md" />
         </div>
         <div className="flex flex-col w-3/4 mt-6">
           <Button type="primary" onClick={onAddItem}>

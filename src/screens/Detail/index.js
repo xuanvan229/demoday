@@ -13,7 +13,9 @@ import {
 import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import moment from 'moment';
 import { get, post } from '../../services/api';
+import Header from '../../components/Header';
 
 const getProjectAPI = (id) => {
   const url = `/projects/${id}`;
@@ -60,7 +62,6 @@ const List = (props) => {
       const result = await getProjectInvesterAPI(id);
       if (result.status === 200) {
         setInvester(result.data);
-        // setItem(result.data);
       }
     } catch (e) {
 
@@ -72,6 +73,12 @@ const List = (props) => {
   };
 
   const handleOk = async () => {
+    if (min > item.remain_shares) {
+      notification.error({
+        message: 'Không đủ số cổ phần để đầu tư',
+      });
+      return;
+    }
     if (min < item.minimum_share) {
       notification.error({
         message: 'Không đủ số cổ phần tối thiểu',
@@ -115,11 +122,21 @@ const List = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  const availableButton = () => {
+    const now = moment();
+    const end = moment(item.available_until);
+    return end.diff(now, 'days') > 0;
+  };
+
   return (
     <>
     {item
 
-      ? <div className="flex flex-wrap w-full p-4">
+      ? <div className='w-full'>
+                  <Header title={item.title} />
+
+       <div className="flex flex-wrap w-full p-4">
       <Modal title="Đầu tư dự án số 1" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <div>
           <div className="flex flex-col  w-full">
@@ -132,69 +149,85 @@ const List = (props) => {
         </div>
       </Modal>
       <div className="flex flex-col p-4 w-full md:w-2/3 pr-2">
-      <div className="bg-white shadow-md rounded-md h-full p-2">
-        <h1 className="text-xl font-bold text-green-500">
-         {item.title}
-        </h1>
-        <p>
-          {item.description}
-        </p>
-        <div className="mt-4">
-          <div>
-            <span className="font-bold text-black">
-            Số cổ phần
-            </span>
-            <span className="ml-2 text-lg font-bold text-blue-400">
-              {item.total_shares}
-            </span>
+        <div className="bg-white shadow-md rounded-md h-full p-2">
+          <h1 className="text-xl font-bold text-green-500">
+          {item.title}
+          </h1>
+          <p>
+            {item.description}
+          </p>
+          <div className="mt-4">
+            <div>
+              <span className="font-bold text-black">
+              người tạo
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                {item.username}
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+              Số cổ phần
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                {item.total_shares}
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+              Số cổ phần còn
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                {item.remain_shares}
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+              Link
+              </span>
+              <a target="_blank" href={item.link} className="ml-2 text-lg font-bold text-blue-400">
+                {item.link}
+              </a>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+              Số cổ phần tối thiểu
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                {item.minimum_share}
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+                Định giá cổ phần
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                <NumberFormat value={item.share_price} displayType={'text'} thousandSeparator={true} suffix={' VND'} renderText={(value) => <span>{value}</span>} />
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+                Lãi suất
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+              {item.profit}% trong {item.profit_time} {item.profit_time_type === 'month' ? 'Tháng' : 'Năm'}
+              </span>
+            </div>
+            <div>
+              <span className="font-bold text-black">
+                Thời gian hoàn tiền
+              </span>
+              <span className="ml-2 text-lg font-bold text-blue-400">
+                {item.withdraw_time} tháng
+              </span>
+            </div>
+            {user_id !== item.ownerId && availableButton() && <Button className="mt-6" type="primary" onClick={showModal}>
+            Đầu tư
+          </Button>}
           </div>
-          <div>
-            <span className="font-bold text-black">
-            Link
-            </span>
-            <a target="_blank" href={item.link} className="ml-2 text-lg font-bold text-blue-400">
-              {item.link}
-            </a>
           </div>
-          <div>
-            <span className="font-bold text-black">
-            Số cổ phần tối thiểu
-            </span>
-            <span className="ml-2 text-lg font-bold text-blue-400">
-              {item.minimum_share}
-            </span>
-          </div>
-          <div>
-            <span className="font-bold text-black">
-              Định giá cổ phần
-            </span>
-            <span className="ml-2 text-lg font-bold text-blue-400">
-              <NumberFormat value={item.share_price} displayType={'text'} thousandSeparator={true} suffix={' VND'} renderText={(value) => <span>{value}</span>} />
-            </span>
-          </div>
-          <div>
-            <span className="font-bold text-black">
-              Lãi suất
-            </span>
-            <span className="ml-2 text-lg font-bold text-blue-400">
-            {item.profit}% trong {item.profit_time} {item.profit_time_type === 'month' ? 'Tháng' : 'Năm'}
-            </span>
-          </div>
-          <div>
-            <span className="font-bold text-black">
-              Thời gian hoàn tiền
-            </span>
-            <span className="ml-2 text-lg font-bold text-blue-400">
-              {item.withdraw_time} tháng
-            </span>
-          </div>
-          {user_id !== item.ownerId && <Button className="mt-6" type="primary" onClick={showModal}>
-          Đầu tư
-        </Button>}
         </div>
-        </div>
-      </div>
-      <div className="flex flex-col  p-4 w-full md:w-1/3">
+        <div className="flex flex-col  p-4 w-full md:w-1/3">
         <div className="bg-white shadow-md rounded-md h-full p-2">
             <h2 className="text-lg font-bold ">
               Những người đầu tư
@@ -213,6 +246,7 @@ const List = (props) => {
             </ul>
         </div>
       </div>
+    </div>
     </div>
       : <Spin/>}
    </>

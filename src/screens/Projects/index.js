@@ -10,6 +10,7 @@ import { Button, Modal } from 'antd';
 import NumberFormat from 'react-number-format';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Header from '../../components/Header';
 
 import { get } from '../../services/api';
 
@@ -116,6 +117,7 @@ const List = () => {
   };
   return (
     <div className="flex flex-col w-full">
+      <Header title="Các dự án" />
       <h1 className="px-4 text-xl text-blue-400 font-bold mt-4">Project của bạn</h1>
       <div className="flex flex-wrap w-full p-4">
         {list.map((item) => (
