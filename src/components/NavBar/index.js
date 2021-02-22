@@ -4,44 +4,44 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-empty */
-import React, {useState} from 'react';
-import {Button, Modal, notification} from 'antd';
-import {MdDashboard} from 'react-icons/md';
-import {CgNotes} from 'react-icons/cg';
-import {AiOutlineSolution} from 'react-icons/ai';
-import {withRouter} from 'react-router';
-import {NavLink} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Button, Modal, notification } from 'antd';
+import { MdDashboard } from 'react-icons/md';
+import { CgNotes } from 'react-icons/cg';
+import { AiOutlineSolution } from 'react-icons/ai';
+import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import logo from '../../assets/images/logo.png';
 
 import styles from './Navbar.module.scss';
-import {get, post, put} from '../../services/api';
+import { get, post, put } from '../../services/api';
 
 const getUserAPI = (id) => {
   const url = `/users/${id}`;
-  return get({url});
+  return get({ url });
 };
 
 const getTimeAPI = () => {
   const url = '/time';
-  return get({url});
+  return get({ url });
 };
 
 const updateBalances = (id, data, headersAuthen) => {
   const url = `/users/${id}`;
-  return put({url, data, headersAuthen});
+  return put({ url, data, headersAuthen });
 };
 
 const triggerEventAPI = () => {
   const url = '/project-invest/demo';
-  return post({url});
+  return post({ url });
 };
 
 const NavBar = (props) => {
   const [item, setItem] = React.useState(null);
-  const {history} = props;
+  const { history } = props;
   const user_id = useSelector((state) => state.login.user_id);
   const token = useSelector((state) => state.login.accessToken);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -49,7 +49,7 @@ const NavBar = (props) => {
   const [time, setTime] = useState('');
 
   React.useEffect(() => {
-    const unlisten = history.listen(({action, location}) => {
+    const unlisten = history.listen(({ action, location }) => {
       // The current location changed.
       getData();
       getTime();
