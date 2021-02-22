@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import NumberFormat from 'react-number-format';
 import { NavLink } from 'react-router-dom';
 import { get } from '../../services/api';

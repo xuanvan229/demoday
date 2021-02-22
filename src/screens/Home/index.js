@@ -4,8 +4,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-// import './Home.css';
-// import './styles/index.scss'
 function Home() {
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Input, DatePicker, Button } from 'antd';
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
-// import Header from '../../../components/Header';
-// import NavBar from '../../../components/NavBar';
-
-// import styles from './AddStory.module.scss'; // Import css modules stylesheet as styles
 
 const { TextArea } = Input;
 
