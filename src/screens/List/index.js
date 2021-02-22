@@ -115,7 +115,7 @@ const List = () => {
     } catch (e) {}
   };
   return (
-    <div>
+    <div className="w-full">
       <Header title="Các dự án đang gọi vốn" />
       <div className="flex flex-wrap w-full p-4">
         {list.map((item) => (
